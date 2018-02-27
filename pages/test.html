@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>first line</title>
+  <style type="text/css">
+    body {
+      background: #456E89;
+    }
+
+    .canvas {
+      height: 300px;
+      width: 300px;
+      margin: 0 auto;
+      font-family: arial;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="canvas">
+    <canvas id="cvs" width="300" height="300"></canvas>
+  </div>
+  <script type="text/javascript">
+    var cvs = document.getElementById("cvs").getContext("2d");
+    function Anim(opt) { //��ʼ��ֵ
+      this.opt = opt;
+    }
+    //node ��ʾ�����ڵ�
+    //staX ��ʾ��ʼx����
+    //staY ��ʾ��ʼy����
+    //len��ʾ�յ����꣬
+    //timing��ʾ���еļ��ʱ�䣬 
+    //num��ʾ���������Ĵ�С 
+    //direc��ʾ�жϻ��������ķ���false��ʾX�ᣬture��ʾY��
+    //lw��ʾ�߿�Ĵ�С 
+    //color ��ʾ����������ɫ
+    Anim.prototype.draw = function () { //����ֱ�ߵ�����
+      var opt = this.opt; //���ö��������
+      var adx = opt.staX;
+      var ady = opt.staY;
+      var that = {
+        x: opt.staX,
+        y: opt.staY
+      };
+      var Time = setInterval(function () {
+        opt.direc //�жϻ��Ʒ���
+          ?
+          opt.len > ady ? ady += opt.num : ady -= opt.num :
+          opt.len > adx ? adx += opt.num : adx -= opt.num;
+        if (adx == opt.len || ady == opt.len) { //ֹͣѭ��
+          clearInterval(Time);
+        }
+        opt.Node.beginPath(); // ��ʼ��������
+        opt.Node.moveTo(that.x, that.y);
+        opt.Node.lineTo(adx, ady);
+        opt.Node.lineWidth = opt.lw || 1;
+        opt.Node.strokeStyle = opt.color;
+        opt.Node.stroke();
+      }, opt.timing);
+    };
+    Anim.prototype.txt = function (opc) {//�������� 
+      cvs.beginPath();
+      cvs.fillStyle = "rgba(255,255,255," + opc + ")";
+      cvs.font = "200px arial";
+      cvs.fillText("M", 100, 200);
+    };
+    var line1 = new Anim({ //ʵ��
+      Node: cvs,
+      color: "#fff",
+      staX: 114,
+      staY: 58,
+      len: 134,
+      timing: 50,
+      num: 1,
+      direc: false,
+      lw: 2
+    });
+    line1.draw(); //ִ�л���
+    var line2 = new Anim({
+      Node: cvs,
+      color: "#fff",
+      staX: 115,
+      staY: 58,
+      len: 200,
+      timing: 20,
+      num: 1,
+      direc: true,
+      lw: 2
+    });
+    line2.draw();
+    var line3 = new Anim({
+      Node: cvs,
+      color: "#fff",
+      staX: 133,
+      staY: 184,
+      len: 58,
+      timing: 20,
+      num: 1,
+      direc: true,
+      lw: 2
+    });
+    line3.draw();
+    var line4 = new Anim({
+      Node: cvs,
+      color: "#fff",
+      staX: 132,
+      staY: 184,
+      len: 203,
+      timing: 35,
+      num: 1,
+      direc: false,
+      lw: 2
+    });
+    line4.draw();
+    var line5 = new Anim({
+      Node: cvs,
+      color: "#fff",
+      staX: 203,
+      staY: 199,
+      len: 115,
+      timing: 35,
+      num: 1,
+      direc: false,
+      lw: 2
+    });
+    line5.draw();
+    var line6 = new Anim({
+      Node: cvs,
+      color: "#fff",
+      staX: 203,
+      staY: 199,
+      len: 184,
+      timing: 50,
+      num: 1,
+      direc: true,
+      lw: 2
+    });
+    line6.draw();
+    var test = new Anim();//��������ʵ��
+    setTimeout(function () {
+      var num = 0;
+      var times = setInterval(function () {
+        num++;
+        var t = num / 100;
+        if (t === 1) {
+          clearInterval(times);
+        }
+        test.txt(t);
+      }, 50)
+    }, 3000)
+  </script>
+</body>
+
+</html>

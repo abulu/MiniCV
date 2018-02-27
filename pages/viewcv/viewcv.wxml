@@ -1,0 +1,5 @@
+<view class="container ">
+    <canvas canvas-id="clock" style="width:350px; height:500px;" bindtap="showcvdesc" />
+  </view>
+
+  

@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/viewcv/viewcv",
+    "pages/index/index",
+    "pages/addcv/addcv",
+    "pages/logs/logs"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#004165",
+    "navigationBarTitleText": "微简历",
+    "navigationBarTextStyle": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/home-normal.png",
+        "selectedIconPath": "image/home-seleted.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/addcv/addcv",
+        "iconPath": "image/my-normal.png",
+        "selectedIconPath": "image/my-seleted.png",
+        "text": "添加简历"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "image/servers-normal.png",
+        "selectedIconPath": "image/servers-seleted.png",
+        "text": "日志"
+      }
+    ]
+  }
+}

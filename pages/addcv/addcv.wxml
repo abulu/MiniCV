@@ -1,0 +1,83 @@
+<view class="userinfo">
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  <block wx:else>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <view class='userinfo-view'>
+      <input class="input userinfo-nickname" name="userName" value='{{uname}}' bindinput="bindNameChange" />
+      <input class="input userinfo-subname" name="userSubName" value='{{usubname}}' bindinput="bindSubNameChange" />
+    </view>
+    <view>
+      <view class="cv-view-btnuser {{isUserSaved?'is_saved':'is_normal'}}" bindtap="saveuserprofile">
+        Save
+      </view>
+    </view>
+  </block>
+</view>
+
+
+
+
+<view class='content-header' bindtap='showViewPart'>
+  <view class='content-header-title'>人生里程</view>
+  <image class='content-header-img' mode="aspectFit" src="{{isShowViewSection?'../../image/down-icon.png':'../../image/up-icon.png'}}"></image>
+</view>
+
+<view class=" content {{isShowViewSection? 'show': 'hide'}}">
+
+
+  <view wx:for="{{myCVArray}}" wx:key="unqiue" wx:for-index="id" class='cv-view cv-view-color'>
+    <view class="cv-view-title">
+      <image style="width: 30rpx; height:30rpx; margin:15rpx;" mode="aspectFit" src="../../image/star-icon.png"></image>
+      {{item.fromdate}} ~ {{item.todate}}
+    </view>
+    <view class="cv-view-desc">{{item.cvdesc}}</view>
+    <view class="cv-view-opt">
+      <view class="cv-view-btn" data-id="{{id}}">
+        修改
+      </view>
+      <view class="cv-view-btn" data-id="{{id}}" bindtap="cleanCVItem">
+        删除
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+
+<view class='cv-view-edit'>
+
+
+  <view class='content-header cv-view-color5' bindtap='showEditPart'>
+    <view class='content-header-title'> 添加 +人生里程</view>
+    <image class='content-header-img' mode="aspectFit" src="{{isShowEditSection?'../../image/down-icon.png':'../../image/up-icon.png'}}"></image>
+  </view>
+
+  <view class="{{isShowEditSection? 'show': 'hide'}}">
+    <view class="itemview">时间戳：
+      <picker class='itemview-picker-date' mode="date" value="{{fdate}}" start="1980-01-01" end="2019-02-01" bindchange="bindDateChangeFrom">
+        <view class="picker">
+          {{fdate}}
+        </view>
+      </picker>
+    </view>
+    <view class="itemview">时间戳：
+      <picker class='itemview-picker-date' mode="date" value="{{edate}}" start="1980-01-01" end="2019-02-01" bindchange="bindDateChangeEnd">
+        <view class="picker">
+          {{edate}}
+        </view>
+      </picker>
+    </view>
+    <view class="itemview-desc">
+      <textarea class="itemview-textarea" name="cvdesc" bindinput="bindKeyInputDesc" placeholder="请输入微简介" />
+      <button class='btn-bg' type="primary" bindtap="saveinput"> 添加 </button>
+
+    </view>
+  </view>
+
+
+
+</view>

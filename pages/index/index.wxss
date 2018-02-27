@@ -1,0 +1,86 @@
+/**index.wxss**/
+.userinfo {
+  display:flex;
+  flex-direction:row;
+  align-items:flex-start;
+  background-color:azure;
+}
+
+.userinfo-avatar {
+  width:90px;
+  height: 90px;
+  margin: 10px;
+  border-radius: 50%;
+
+}
+.userinfo-view{
+  display:flex;
+  flex-direction: column;
+  padding-top:15px;
+  padding-left:10px;
+}
+
+.userinfo-nickname {
+  color: #000;
+  font-size:36px;
+  
+}
+.userinfo-subname{
+ color: #333;
+ padding-top:5px;
+  font-size:16px;
+}
+
+
+/*Content style*/
+.content{
+  display:flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items:flex-start;
+
+  margin: 5px 15px;
+  
+}
+
+.cv-view{
+ border-radius:15px;
+  margin-top:15px;
+  padding:10px;
+ font-size:16px;
+}
+.cv-view-time{
+  font-size:26px;
+  color:#ffffff;
+}
+.cv-view-desc{  
+  padding-top:15px;
+  padding-bottom:10px;
+  color:#ffffff;}
+
+
+.cv-view-color1{
+  background-color:#e46c0a;
+}
+.cv-view-color2{
+  background-color:#0070c0;
+}
+
+.cv-view-color3{
+  background-color:#00b050;
+}
+
+.cv-view-color4{
+  background-color:#31859c;
+}
+
+.cv-view-color5{
+  background-color:#254061;
+}
+
+/*Build the display block css style*/
+.view-cv-colock{
+   display:flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
